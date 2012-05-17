@@ -1,0 +1,1 @@
+js_beautify(%s);
