@@ -24,18 +24,18 @@ Your \<Leader\> key is often `\`
 Customization
 -------------
 
-1. to add more language support
+1. jsbeautify options
 
-If you wants this plugin to support cpp file, you should create `beautify-cpp.js` and `beautify-cpp.run.js`.
-
-These two files are pure javascript
-
-2. jsbeautify options
-
-Take a look at `beautify-css.run.js`, this file contains following code
+    Take a look at `beautify-css.run.js`, this file contains following code
 
         css_beautify(%s);
 
-`%s` refers to the codes before beautify, the other part is pure javascript.
+    `%s` refers to the codes before beautify, the other part is pure javascript.
 
-options about beautify javascript look at [here](https://github.com/einars/js-beautify/blob/master/beautify.js)
+    [javascript beautifier options](https://github.com/einars/js-beautify/blob/master/beautify.js), [html beautifier options](https://github.com/einars/js-beautify/blob/master/beautify-html.js), [css beautifier options](https://github.com/einars/js-beautify/blob/master/beautify-css.js)
+
+2. add more language support
+
+    If you wants this plugin to support cpp file, you should create `beautify-cpp.js` and `beautify-cpp.run.js`.
+
+    These two files are pure javascript
