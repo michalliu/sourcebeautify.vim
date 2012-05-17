@@ -38,4 +38,4 @@ Customization
 
     If you wants this plugin to support cpp file, you should create `beautify-cpp.js` and `beautify-cpp.run.js`.
 
-    These two files are pure javascript
+    These two files should write by pure javascript
