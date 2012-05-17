@@ -17,106 +17,106 @@ endif
 
 let s:install_dir = expand("<sfile>:p:h")
 
-let g:beautifiers = {}
+let s:beautifiers = {}
 " sourcetype is support by this plugin
-let g:beautifiers.supportedSourceType={
+let s:beautifiers.supportedSourceType={
 \'javascript':1,
 \'css':1,
 \'html':1
 \}
 " sourcetype aliaes
-let g:beautifiers.supportedSourceTypeAlias={
+let s:beautifiers.supportedSourceTypeAlias={
 \'javascript':['js'],
 \'html':['xhtml','htm']
 \}
 " dump context files(beautify-{type}.js) to memory to improve performance
-let g:beautifiers.contextCache={}
+let s:beautifiers.contextCache={}
 " check if context is already loaded to jsruntime
-let g:beautifiers.loadedContext={}
+let s:beautifiers.loadedContext={}
 " dump runner files(beautify-{type}.run.js) to memory to improve performance
-let g:beautifiers.runnerCache={}
+let s:beautifiers.runnerCache={}
 
 " init beautifier
 " context loader
-function beautifiers.prepareContext() dict
+function! s:beautifiers.prepareContext() dict
 
     " current working source type
     let self.st=&filetype
 
-	let issupport = get(self.supportedSourceType,self.st)
+    let issupport = get(self.supportedSourceType,self.st)
 
-	" check alias name
-	if !issupport
-		for alias in keys(self.supportedSourceTypeAlias)
-		    let aliasmap = self.supportedSourceTypeAlias[alias]
-			if index(aliasmap, self.st) >= 0
-				let self.st = alias
-				break
-			endif
-		endfor
-	endif
+    " check alias name
+    if !issupport
+        for alias in keys(self.supportedSourceTypeAlias)
+            let aliasmap = self.supportedSourceTypeAlias[alias]
+            if index(aliasmap, self.st) >= 0
+                let self.st = alias
+                break
+            endif
+        endfor
+    endif
 
-	let issupport = get(self.supportedSourceType,self.st)
+    let issupport = get(self.supportedSourceType,self.st)
 
-	" not found beautifier
-	if !issupport
-		echoerr("sry sourcebeautify doesn't supported ".&filetype." yet")
-		return 0
-	endif
+    " not found beautifier
+    if !issupport
+        echoerr("sry sourcebeautify doesn't supported ".&filetype." yet")
+        return 0
+    endif
 
-	" context is ok
-	if get(self.loadedContext, self.st)
-		return 1
-	endif
+    " context is ok
+    if get(self.loadedContext, self.st)
+        return 1
+    endif
 
-	let context = get(self.contextCache,self.st, "")
+    let context = get(self.contextCache,self.st, "")
 
-	" context not cached
-	if !len(context)
-		let beautifierpath = s:install_dir.'/beautifiers/beautify-'.self.st.'.js'
-		" cache executable context
-		let context = join(readfile(beautifierpath),"\n")
-		let self.contextCache[self.st]=context
-	endif
+    " context not cached
+    if !len(context)
+        let beautifierpath = s:install_dir.'/beautifiers/beautify-'.self.st.'.js'
+        " cache executable context
+        let context = join(readfile(beautifierpath),"\n")
+        let self.contextCache[self.st]=context
+    endif
 
     if g:jsruntime_support_living_context
-	    " exec context in jsruntime
+        " exec context in jsruntime
         call b:jsruntimeEvalScript(context,0)
-		" set & update flag
-		let self.loadedContext[self.st] = 1
-	else
-		" reset flag
-		let self.loadedContext = {}
-	endif
+        " set & update flag
+        let self.loadedContext[self.st] = 1
+    else
+        " reset flag
+        let self.loadedContext = {}
+    endif
 
-	return 1
+    return 1
 
 endfunction
 
-function beautifiers.beautify(source) dict
+function! s:beautifiers.beautify(source) dict
 
-	" read from cache
-	let runner = get(self.runnerCache,self.st, "")
+    " read from cache
+    let runner = get(self.runnerCache,self.st, "")
 
-	" evalable javascript
-	let js = []
+    " evalable javascript
+    let js = []
 
-	" runner not cached
-	if !len(runner)
-		let runnerpath = s:install_dir.'/beautifiers/beautify-'.self.st.'.run.js'
-		" cache runner
-		let runner = join(readfile(runnerpath),"\n")
-		let self.runnerCache[self.st]=runner
-	endif
+    " runner not cached
+    if !len(runner)
+        let runnerpath = s:install_dir.'/beautifiers/beautify-'.self.st.'.run.js'
+        " cache runner
+        let runner = join(readfile(runnerpath),"\n")
+        let self.runnerCache[self.st]=runner
+    endif
 
-	" context must be prepared
+    " context must be prepared
     if !g:jsruntime_support_living_context
-		call add(js,get(self.contextCache,self.st, ""))
-	endif
+        call add(js,get(self.contextCache,self.st, ""))
+    endif
 
-	call add(js,printf(runner,b:json_dump_string(a:source)))
+    call add(js,printf(runner,b:json_dump_string(a:source)))
 
-	return b:jsruntimeEvalScript(join(js,"\n"))
+    return b:jsruntimeEvalScript(join(js,"\n"))
 
 endfunction
 
@@ -127,41 +127,41 @@ endfunction
 " still works
 " more info :help initialization
 if !exists("*s:checkDependency")
-	function s:checkDependency()
+    function s:checkDependency()
         if !exists("g:loaded_jsruntime")
             echoerr('sourcebeautify requires jsruntime.vim, plz visit http://www.vim.org/scripts/script.php?script_id=4050')
-			return 0
+            return 0
         endif
 
-		if !g:loaded_jsruntime
-			echoerr('sourcebeautify complains jsruntime is not working properly')
+        if !g:loaded_jsruntime
+            echoerr('sourcebeautify complains jsruntime is not working properly')
 
-			return 0
-		endif
+            return 0
+        endif
 
         if !exists("g:loaded_jsoncodecs")
             echoerr('sourcebeautify requires jsoncodecs.vim, plz visit http://www.vim.org/scripts/script.php?script_id=4056')
-			return 0
+            return 0
         endif
-		return 1
-	endfunction
+        return 1
+    endfunction
 endif
 
 if !exists("*s:beautify")
-	function s:beautify(...)
+    function s:beautify(...)
         if s:checkDependency()
-			echo "beautifying, please wait..."
-			let success = g:beautifiers.prepareContext()
-			if success
-                let @0 = g:beautifiers.beautify(getline(1,'$'))
-				:g/.*/d
-				put!0
-				:1
-			else
-				redraw!
-			endif
-		endif
-	endfunction
+            echo "beautifying, please wait..."
+            let success = s:beautifiers.prepareContext()
+            if success
+                let @0 = s:beautifiers.beautify(getline(1,'$'))
+                :g/.*/d
+                put!0
+                :1
+            else
+                redraw!
+            endif
+        endif
+    endfunction
 endif
 
 nnoremap <silent> <leader>sb :call <SID>beautify()<cr>
