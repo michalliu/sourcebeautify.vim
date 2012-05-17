@@ -10,7 +10,9 @@ More language support is well welcomed, your can develop it by pure javascript, 
 Install
 -------
 
-copy __plugin/sourcebeautify__ to __vimfiles/plugin__
+This plugin requires [jsruntime.vim](https://github.com/michalliu/jsruntime.vim) and [jsoncodecs.vim](https://github.com/michalliu/jsoncodecs.vim) to be installed first
+
+then copy __plugin/sourcebeautify__ to __vimfiles/plugin__
 
 
 Usage
