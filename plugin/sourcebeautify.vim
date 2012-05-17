@@ -154,9 +154,9 @@ if !exists("*s:beautify")
             let success = s:beautifiers.prepareContext()
             if success
                 let @0 = s:beautifiers.beautify(getline(1,'$'))
-                :g/.*/d
+				exec "g/.*/d"
                 put!0
-                :1
+				exec "normal 1<G>"
             else
                 redraw!
             endif
