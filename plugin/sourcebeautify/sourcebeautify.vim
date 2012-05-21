@@ -60,7 +60,7 @@ function! s:beautifiers.prepareContext() dict
 
     " not found beautifier
     if !issupport
-        echoerr("sry sourcebeautify doesn't supported ".&filetype." yet")
+        echoerr("sry sourcebeautify doesn't support ".(&filetype ? &filetype : "unknown")." file yet")
         return 0
     endif
 
