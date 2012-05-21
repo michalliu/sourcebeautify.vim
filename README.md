@@ -33,6 +33,8 @@ Customization
         css_beautify(%s);
 
     `%s` refers to the codes before beautify, the other part is pure javascript.
+    
+        css_beautify(%s, {indent_char:"\t"})
 
     [javascript beautifier options](https://github.com/einars/js-beautify/blob/master/beautify.js), [html beautifier options](https://github.com/einars/js-beautify/blob/master/beautify-html.js), [css beautifier options](https://github.com/einars/js-beautify/blob/master/beautify-css.js)
 
@@ -40,4 +42,4 @@ Customization
 
     If you wants this plugin to support cpp file, you should create `beautify-cpp.js` and `beautify-cpp.run.js`.
 
-    These two files should write by pure javascript
+    These two files should be written by pure javascript
