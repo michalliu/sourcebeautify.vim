@@ -1,4 +1,4 @@
-(function () {
+﻿(function () {
     var a, b = window.T,
         c = "http";
     scheme = c + "://", host = "open.t.qq.com", a = {
