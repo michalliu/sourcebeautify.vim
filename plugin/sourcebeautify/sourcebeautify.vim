@@ -18,13 +18,13 @@ endif
 let s:install_dir = expand("<sfile>:p:h")
 
 let s:beautifiers = {}
-" sourcetype is support by this plugin
+" sourcetype that support by this plugin
 let s:beautifiers.supportedSourceType={
 \'javascript':1,
 \'css':1,
 \'html':1
 \}
-" sourcetype aliaes
+" sourcetype name alias
 let s:beautifiers.supportedSourceTypeAlias={
 \'javascript':['js'],
 \'html':['xhtml','htm']
