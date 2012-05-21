@@ -51,8 +51,8 @@ Customization
         \'html':1
         \}
     
-       " sourcetype alias
-       let s:beautifiers.supportedSourceTypeAlias={
-       \'javascript':['js'],
-       \'html':['xhtml','htm']
-       \}
+        " sourcetype alias
+        let s:beautifiers.supportedSourceTypeAlias={
+        \'javascript':['js'],
+        \'html':['xhtml','htm']
+        \}
