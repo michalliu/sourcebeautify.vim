@@ -44,14 +44,14 @@ Customization
 
     These two files should be written by pure javascript, then modify `sourcebeautify.vim` add declaration and alias
     
-        " sourcetype is support by this plugin
+        " sourcetype that support by this plugin
         let s:beautifiers.supportedSourceType={
         \'javascript':1,
         \'css':1,
         \'html':1
         \}
     
-        " sourcetype alias
+        " sourcetype name alias
         let s:beautifiers.supportedSourceTypeAlias={
         \'javascript':['js'],
         \'html':['xhtml','htm']
