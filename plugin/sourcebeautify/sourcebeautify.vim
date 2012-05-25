@@ -161,7 +161,6 @@ if !exists("*s:beautify")
 					call setline(startline,retline)
 					let startline+=1
 				endfor
-				exec "normal 1<G>"
             else
                 redraw!
             endif
