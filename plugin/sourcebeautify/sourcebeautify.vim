@@ -153,14 +153,10 @@ if !exists("*s:beautify")
             echo "beautifying, please wait..."
             let success = s:beautifiers.prepareContext()
             if success
-                let ret = s:beautifiers.beautify(getline(1,'$'))
-				exec "g/.*/d"
-				let startline=1
-				let retlines = split(ret,"\n")
-				for retline in retlines
-					call setline(startline,retline)
-					let startline+=1
-				endfor
+                let @0 = s:beautifiers.beautify(getline(1,'$'))
+				:g/.*/d
+				put!0
+				:normal gg
             else
                 redraw!
             endif
