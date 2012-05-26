@@ -14,6 +14,7 @@ This plugin requires [jsruntime.vim](https://github.com/michalliu/jsruntime.vim)
 
 then copy __plugin/sourcebeautify__ to __vimfiles/plugin__
 
+    au BufRead,BufNewFile \*.json setf json
 
 Usage
 -----
@@ -36,7 +37,7 @@ Customization
     
         css_beautify(%s,{indent_char:'\t'});
 
-    [javascript beautifier options](https://github.com/einars/js-beautify/blob/master/beautify.js), [html beautifier options](https://github.com/einars/js-beautify/blob/master/beautify-html.js), [css beautifier options](https://github.com/einars/js-beautify/blob/master/beautify-css.js)
+    [javascript beautifier options](https://github.com/einars/js-beautify/blob/master/beautify.js), [html beautifier options](https://github.com/einars/js-beautify/blob/master/beautify-html.js), [css beautifier options](https://github.com/einars/js-beautify/blob/master/beautify-css.js), [jsonlint options](https://github.com/zaach/jsonlint)
 
 2. add more language support
 
