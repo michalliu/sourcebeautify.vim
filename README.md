@@ -16,7 +16,7 @@ then copy __plugin/sourcebeautify__ to __vimfiles/plugin__
 
 Sourcebeautify support json file, but vim can't detect `json` type automaticly. You can add following code to your `vimrc`. I suggest to install [json.vim](http://www.vim.org/scripts/script.php?script_id=1945)
 
-    au BufRead,BufNewFile \*.json setf json
+    au BufRead,BufNewFile *.json setf json
 
 Usage
 -----
