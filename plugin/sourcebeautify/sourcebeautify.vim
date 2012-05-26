@@ -22,7 +22,8 @@ let s:beautifiers = {}
 let s:beautifiers.supportedSourceType={
 \'javascript':1,
 \'css':1,
-\'html':1
+\'html':1,
+\'json':1
 \}
 " sourcetype name alias
 let s:beautifiers.supportedSourceTypeAlias={
@@ -75,6 +76,10 @@ function! s:beautifiers.prepareContext() dict
     if !len(context)
         let beautifierpath = s:install_dir.'/beautifiers/beautify-'.self.st.'.js'
         " cache executable context
+        if !filereadable(beautifierpath)
+            echoerr "sourcebeautify.vim can't readfile from path ".beautifierpath
+            return 0
+        endif
         let context = join(readfile(beautifierpath),"\n")
         let self.contextCache[self.st]=context
     endif
@@ -105,6 +110,10 @@ function! s:beautifiers.beautify(source) dict
     if !len(runner)
         let runnerpath = s:install_dir.'/beautifiers/beautify-'.self.st.'.run.js'
         " cache runner
+        if !filereadable(runnerpath)
+            echoerr "sourcebeautify.vim can't readfile from path ".runnerpath
+            return "undefined"
+        endif
         let runner = join(readfile(runnerpath),"\n")
         let self.runnerCache[self.st]=runner
     endif
@@ -154,9 +163,11 @@ if !exists("*s:beautify")
             let success = s:beautifiers.prepareContext()
             if success
                 let @0 = s:beautifiers.beautify(getline(1,'$'))
-				:g/.*/d
-				put!0
-				:normal gg
+                if @0 != "undefined"
+                    :g/.*/d
+                    put!0
+                    :normal gg
+                endif
             else
                 redraw!
             endif
