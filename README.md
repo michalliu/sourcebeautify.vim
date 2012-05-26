@@ -3,7 +3,7 @@ sourcebeautify.vim
 
 Beautify your source code in Vim
 
-It support javascript,css,html currently which is powered by [js-beautify](https://github.com/einars/js-beautify)
+It support `javascript,css,html` which is powered by [js-beautify](https://github.com/einars/js-beautify) and `JSON` powered by [jsonlint](https://github.com/zaach/jsonlint)
 
 More language support is well welcomed, your can develop it by pure javascript, see `Customization` for more info.
 
@@ -63,6 +63,6 @@ Customization
 Contributor
 -----------
 
-__einars__ - author of  [js-beautify](https://github.com/einars/js-beautify) provide beautifier of `javascript`,`html`,`css` file
+__Einar Lielmanis__ - author of  [js-beautify](https://github.com/einars/js-beautify) provide beautifier of `javascript`,`html`,`css` file
 
-__zaach__ - author of  [jsonlint](https://github.com/zaach/jsonlint) provide error checker and beautifier of `JSON` file
+__Zach Carter__ - author of  [jsonlint](https://github.com/zaach/jsonlint) provide error checker and beautifier of `JSON` file
