@@ -63,6 +63,6 @@ Customization
 Contributor
 -----------
 
-__einars__ - author of  [js-beautify](https://github.com/einars/js-beautify) provide beautifier of javascript,html,css file
+__einars__ - author of  [js-beautify](https://github.com/einars/js-beautify) provide beautifier of `javascript`,`html`,`css` file
 
-__zaach__ - author of  [jsonlint](https://github.com/zaach/jsonlint) provide error checker and beautifier of JSON file
+__zaach__ - author of  [jsonlint](https://github.com/zaach/jsonlint) provide error checker and beautifier of `JSON` file
