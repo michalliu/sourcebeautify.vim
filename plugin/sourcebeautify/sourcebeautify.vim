@@ -167,6 +167,8 @@ if !exists("*s:beautify")
                     :g/.*/d
                     put!0
                     :normal gg
+                else
+                    echo "done,but beautifier doesn't return anything"
                 endif
             else
                 redraw!
