@@ -11,9 +11,9 @@
 
 if exists("b:did_sourcebeautify_plugin")
     finish
-else
-    let b:did_sourcebeautify_plugin = 1
 endif
+
+let b:did_sourcebeautify_plugin = 1
 
 let s:install_dir = expand("<sfile>:p:h")
 
@@ -32,7 +32,7 @@ let s:beautifiers.supportedSourceTypeAlias={
 \}
 " dump context files(beautify-{type}.js) to memory to improve performance
 let s:beautifiers.contextCache={}
-" check if context is already loaded to jsruntime
+" check if context is already loaded
 let s:beautifiers.loadedContext={}
 " dump runner files(beautify-{type}.run.js) to memory to improve performance
 let s:beautifiers.runnerCache={}
@@ -84,9 +84,9 @@ function! s:beautifiers.prepareContext() dict
         let self.contextCache[self.st]=context
     endif
 
-    if g:jsruntime_support_living_context
-        " exec context in jsruntime
-        call b:jsruntimeEvalScript(context,0)
+    if javascript#runtime#isSupportLivingContext()
+        " exec context
+        call javascript#runtime#evalScript(context,0)
         " set & update flag
         let self.loadedContext[self.st] = 1
     else
@@ -119,61 +119,32 @@ function! s:beautifiers.beautify(source) dict
     endif
 
     " context must be prepared
-    if !g:jsruntime_support_living_context
+    if !javascript#runtime#isSupportLivingContext()
         call add(js,get(self.contextCache,self.st, ""))
     endif
 
-    call add(js,printf(runner,b:json_dump_string(a:source)))
+    call add(js,printf(runner,jsoncodecs#dump_string(a:source)))
 
-    return b:jsruntimeEvalScript(join(js,"\n"))
+    return javascript#runtime#evalScript(join(js,"\n"))
 
 endfunction
 
-" Check if dependency is ok
-" if ok this function return 1 
-" if not ok this function return 0 and print out errors
-" this is to ensure even someone change the name of this file, this plugin
-" still works
-" more info :help initialization
-if !exists("*s:checkDependency")
-    function s:checkDependency()
-        if !exists("g:loaded_jsruntime")
-            echoerr('sourcebeautify requires jsruntime.vim, plz visit http://www.vim.org/scripts/script.php?script_id=4050')
-            return 0
-        endif
-
-        if !g:loaded_jsruntime
-            echoerr('sourcebeautify complains jsruntime is not working properly')
-
-            return 0
-        endif
-
-        if !exists("g:loaded_jsoncodecs")
-            echoerr('sourcebeautify requires jsoncodecs.vim, plz visit http://www.vim.org/scripts/script.php?script_id=4056')
-            return 0
-        endif
-        return 1
-    endfunction
-endif
-
 if !exists("*s:beautify")
     function s:beautify(...)
-        if s:checkDependency()
-            echo "beautifying, please wait..."
-            let success = s:beautifiers.prepareContext()
-            if success
-                let @0 = s:beautifiers.beautify(getline(1,'$'))
-                if @0 != "undefined"
-                    :g/.*/d
-                    put!0
-                    :normal gg
-                else
-                    echo "done,but beautifier returns nothing"
-                endif
-            else
-                redraw!
-            endif
-        endif
+       echo "beautifying, please wait..."
+       let success = s:beautifiers.prepareContext()
+       if success
+           let @0 = s:beautifiers.beautify(getline(1,'$'))
+           if @0 != "undefined"
+               :g/.*/d
+               put!0
+               :normal gg
+           else
+               echo "done,but beautifier returns nothing"
+           endif
+       else
+           redraw!
+       endif
     endfunction
 endif
 
