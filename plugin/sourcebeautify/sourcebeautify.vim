@@ -9,12 +9,6 @@
 "
 " Version: 1.0
 
-if exists("b:did_sourcebeautify_plugin")
-    finish
-endif
-
-let b:did_sourcebeautify_plugin = 1
-
 let s:install_dir = expand("<sfile>:p:h")
 
 let s:beautifiers = {}
