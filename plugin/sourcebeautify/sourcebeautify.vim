@@ -8,6 +8,10 @@
 "              https://github.com/einars/js-beautify
 "
 " Version: 1.0
+if exists('g:loaded_sourcebeautify') || &cp || version < 700
+	finish
+endif
+let g:loaded_sourcebeautify = 1
 
 let s:install_dir = expand("<sfile>:p:h")
 
@@ -37,10 +41,10 @@ function! s:beautifiers.prepareContext() dict
 
     " current working source type
     let self.st=&filetype
-
+    " check if support current file type
     let issupport = get(self.supportedSourceType,self.st)
 
-    " check alias name
+    " if not check the alias name
     if !issupport
         for alias in keys(self.supportedSourceTypeAlias)
             let aliasmap = self.supportedSourceTypeAlias[alias]
@@ -50,7 +54,7 @@ function! s:beautifiers.prepareContext() dict
             endif
         endfor
     endif
-
+    " recheck
     let issupport = get(self.supportedSourceType,self.st)
 
     " not found beautifier
@@ -63,10 +67,10 @@ function! s:beautifiers.prepareContext() dict
     if get(self.loadedContext, self.st)
         return 1
     endif
-
+    " start prepare context
     let context = get(self.contextCache,self.st, "")
 
-    " context not cached
+    " context not cached, put to cache
     if !len(context)
         let beautifierpath = s:install_dir.'/beautifiers/beautify-'.self.st.'.js'
         " cache executable context
@@ -112,7 +116,8 @@ function! s:beautifiers.beautify(source) dict
         let self.runnerCache[self.st]=runner
     endif
 
-    " context must be prepared
+    " context must be prepared, context doesn't exist put to evalute waiting
+	" list
     if !javascript#runtime#isSupportLivingContext()
         call add(js,get(self.contextCache,self.st, ""))
     endif
