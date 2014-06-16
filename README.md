@@ -69,9 +69,7 @@ Customization
         \'html':['xhtml','htm']
         \}
 
-Contributor
+Contributors
 -----------
-
-__Einar Lielmanis__ - author of  [js-beautify](https://github.com/einars/js-beautify) provide beautifier of `javascript`,`html`,`css` file
-
-__Zach Carter__ - author of  [jsonlint](https://github.com/zaach/jsonlint) provide error checker and beautifier of `JSON` file
+1. __Einar Lielmanis__ - author of  [js-beautify](https://github.com/einars/js-beautify) provide beautifier of `javascript`,`html`,`css` file
+2. __Zach Carter__ - author of  [jsonlint](https://github.com/zaach/jsonlint) provide error checker and beautifier of `JSON` file
