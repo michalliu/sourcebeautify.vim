@@ -7,6 +7,7 @@ Code          | Beautifier
 ------------- | -------------
 Javascript,CSS,HTML  | [js-beautify](https://github.com/einars/js-beautify)
 JSON  | [jsonlint](https://github.com/zaach/jsonlint)
+XML,SQL  | [vkBeautify](https://github.com/vkiryukhin/vkBeautify)
 
 More language support is well welcomed, your can develop it by pure javascript, see [Customization](#customization) section for more info.
 
@@ -71,5 +72,6 @@ Customization
 
 Contributors
 -----------
-1. __Einar Lielmanis__ - author of  [js-beautify](https://github.com/einars/js-beautify) provide beautifier of `javascript`,`html`,`css` file
-2. __Zach Carter__ - author of  [jsonlint](https://github.com/zaach/jsonlint) provide error checker and beautifier of `JSON` file
+1. __Einar Lielmanis__ - author of  [js-beautify](https://github.com/einars/js-beautify) provides beautifier of `javascript`,`html`,`css` file
+2. __Zach Carter__ - author of  [jsonlint](https://github.com/zaach/jsonlint) provides error checker and beautifier of `JSON` file
+3. __Vadim Kiryukhin__ - author of  [vkBeautify](https://github.com/vkiryukhin/vkBeautify) provides XML and SQL beautifier
