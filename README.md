@@ -39,7 +39,7 @@ Customization
     
         css_beautify(%s,{indent_char:'\t'});
 
-    [javascript beautifier options](https://github.com/einars/js-beautify/blob/master/beautify.js), [html beautifier options](https://github.com/einars/js-beautify/blob/master/beautify-html.js), [css beautifier options](https://github.com/einars/js-beautify/blob/master/beautify-css.js), [jsonlint options](https://github.com/zaach/jsonlint)
+    [javascript beautifier options](https://github.com/beautify-web/js-beautify/blob/v0.4.2/beautify.js), [html beautifier options](https://github.com/beautify-web/js-beautify/blob/v0.4.2/beautify-html.js), [css beautifier options](https://github.com/beautify-web/js-beautify/blob/v0.4.2/beautify-css.js), [jsonlint options](https://github.com/zaach/jsonlint)
 
 2. add more language support
 
