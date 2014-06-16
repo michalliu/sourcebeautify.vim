@@ -11,14 +11,19 @@ JSON  | [jsonlint](https://github.com/zaach/jsonlint)
 More language support is well welcomed, your can develop it by pure javascript, see [Customization](#customization) section for more info.
 
 
-Install
+Installation
 -------
 
-This plugin requires [jsruntime.vim](https://github.com/michalliu/jsruntime.vim) and [jsoncodecs.vim](https://github.com/michalliu/jsoncodecs.vim) to be installed first
+First, Install dependencies:  
 
-then copy __plugin/sourcebeautify__ to __vimfiles/plugin__
+1. [jsruntime.vim](https://github.com/michalliu/jsruntime.vim)  
+2. [jsoncodecs.vim](https://github.com/michalliu/jsoncodecs.vim)
 
-Sourcebeautify support json file, but vim can't detect `json` type automaticly. You can add following code to your `vimrc`. I suggest to install [json.vim](http://www.vim.org/scripts/script.php?script_id=1945)
+Then, Copy __plugin/sourcebeautify__ to __vimfiles/plugin__
+
+**Notice:**
+
+Sourcebeautify is a filetype plugin. By default VIM can't detect `json` filetype automaticly. You can either add following code to your `vimrc` to solve the problem or install [json.vim](http://www.vim.org/scripts/script.php?script_id=1945)
 
     au BufRead,BufNewFile *.json setf json
 
