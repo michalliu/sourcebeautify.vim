@@ -1,20 +1,29 @@
 sourcebeautify.vim
 ==================
 
-Beautify your source code in Vim
+Beautify your source code in Vim.
 
-It support `javascript,css,html` which is powered by [js-beautify](https://github.com/einars/js-beautify) and `JSON` powered by [jsonlint](https://github.com/zaach/jsonlint)
+Code          | Beautifier
+------------- | -------------
+Javascript,CSS,HTML  | [js-beautify](https://github.com/einars/js-beautify)
+JSON  | [jsonlint](https://github.com/zaach/jsonlint)
 
-More language support is well welcomed, your can develop it by pure javascript, see `Customization` for more info.
+More language support is well welcomed, your can develop it by pure javascript, see [Customization](#customization) section for more info.
 
-Install
+
+Installation
 -------
 
-This plugin requires [jsruntime.vim](https://github.com/michalliu/jsruntime.vim) and [jsoncodecs.vim](https://github.com/michalliu/jsoncodecs.vim) to be installed first
+First, Install dependencies:  
 
-then copy __plugin/sourcebeautify__ to __vimfiles/plugin__
+1. [jsruntime.vim](https://github.com/michalliu/jsruntime.vim)  
+2. [jsoncodecs.vim](https://github.com/michalliu/jsoncodecs.vim)
 
-Sourcebeautify support json file, but vim can't detect `json` type automaticly. You can add following code to your `vimrc`. I suggest to install [json.vim](http://www.vim.org/scripts/script.php?script_id=1945)
+Then, Copy __plugin/sourcebeautify__ to __vimfiles/plugin__
+
+**Notice:**
+
+Sourcebeautify is a filetype plugin. By default VIM can't detect `json` filetype automaticly. You can either add following code to your `vimrc` to solve the problem or install [json.vim](http://www.vim.org/scripts/script.php?script_id=1945)
 
     au BufRead,BufNewFile *.json setf json
 
@@ -39,7 +48,7 @@ Customization
     
         css_beautify(%s,{indent_char:'\t'});
 
-    [javascript beautifier options](https://github.com/einars/js-beautify/blob/master/beautify.js), [html beautifier options](https://github.com/einars/js-beautify/blob/master/beautify-html.js), [css beautifier options](https://github.com/einars/js-beautify/blob/master/beautify-css.js), [jsonlint options](https://github.com/zaach/jsonlint)
+    [javascript beautifier options](https://github.com/beautify-web/js-beautify/blob/v0.4.2/beautify.js), [html beautifier options](https://github.com/beautify-web/js-beautify/blob/v0.4.2/beautify-html.js), [css beautifier options](https://github.com/beautify-web/js-beautify/blob/v0.4.2/beautify-css.js), [jsonlint options](https://github.com/zaach/jsonlint)
 
 2. add more language support
 
@@ -60,9 +69,7 @@ Customization
         \'html':['xhtml','htm']
         \}
 
-Contributor
+Contributors
 -----------
-
-__Einar Lielmanis__ - author of  [js-beautify](https://github.com/einars/js-beautify) provide beautifier of `javascript`,`html`,`css` file
-
-__Zach Carter__ - author of  [jsonlint](https://github.com/zaach/jsonlint) provide error checker and beautifier of `JSON` file
+1. __Einar Lielmanis__ - author of  [js-beautify](https://github.com/einars/js-beautify) provide beautifier of `javascript`,`html`,`css` file
+2. __Zach Carter__ - author of  [jsonlint](https://github.com/zaach/jsonlint) provide error checker and beautifier of `JSON` file
