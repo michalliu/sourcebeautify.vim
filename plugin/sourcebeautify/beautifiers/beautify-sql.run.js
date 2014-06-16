@@ -1,0 +1,1 @@
+vkbeautify.sql(%s);

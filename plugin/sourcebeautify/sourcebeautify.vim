@@ -21,7 +21,9 @@ let s:beautifiers.supportedSourceType={
 \'javascript':1,
 \'css':1,
 \'html':1,
-\'json':1
+\'json':1,
+\'sql':1,
+\'xml':1
 \}
 " sourcetype name alias
 let s:beautifiers.supportedSourceTypeAlias={
