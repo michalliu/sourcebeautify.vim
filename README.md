@@ -1,13 +1,12 @@
 sourcebeautify.vim
 ==================
 
-Beautify your source code in Vim.
+Beautify your source code in Vim. 
 
-Code          | Beautifier
-------------- | -------------
-Javascript,CSS,HTML  | [js-beautify](https://github.com/einars/js-beautify)
-JSON  | [jsonlint](https://github.com/zaach/jsonlint)
-XML,SQL  | [vkBeautify](https://github.com/vkiryukhin/vkBeautify)
+Language support:
+- [x] Javascript,CSS,HTML   by [js-beautify](https://github.com/einars/js-beautify)
+- [x] JSON  by [jsonlint](https://github.com/zaach/jsonlint)
+- [x] XML,SQL  by [vkBeautify](https://github.com/vkiryukhin/vkBeautify)
 
 More language support is well welcomed, your can develop it by pure javascript, see [Customization](#customization) section for more info.
 
