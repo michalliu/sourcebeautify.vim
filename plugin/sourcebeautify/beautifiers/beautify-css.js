@@ -190,6 +190,9 @@ function css_beautify(source_text, options) {
 
 
     var sweetCode = output.join('').replace(/[\n ]+$/, '');
+	// fix css media query
+	// detail https://github.com/michalliu/sourcebeautify.vim/issues/12
+	sweetCode=sweetCode.replace(/and\(/ig,"and (");
     return sweetCode;
 }
 
