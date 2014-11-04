@@ -149,4 +149,6 @@ if !exists("*s:beautify")
     endfunction
 endif
 
-nnoremap <silent> <leader>sb :call <SID>beautify()<cr>
+if maparg('<leader>sb', 'n') == ''
+  nnoremap <silent> <leader>sb :call <SID>beautify()<cr>
+endif
