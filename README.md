@@ -1,7 +1,7 @@
 sourcebeautify.vim
 ==================
 
-Beautify your source code in Vim. 
+Beautify your source code in Vim. It supports Windows/Linux/Mac up to vim 8.0
 
 Language support:
 - [x] Javascript,CSS,HTML   by [js-beautify](https://github.com/einars/js-beautify)
